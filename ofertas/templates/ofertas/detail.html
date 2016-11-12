@@ -1,0 +1,28 @@
+{% extends 'ofertas/base.html' %}
+{% block title %}Detalhes da Oportunidade{% endblock %}
+
+{% block body %}
+    <img src="{{ oferta.imagem }}" height="200">
+
+    <h1>{{ oferta.titulo }}</h1>
+    <h3>{{ oferta.criador }}</h3>
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    <form action="{% url 'ofertas:favorite' oferta.id %}" method="post">
+        {% csrf_token %}
+        {% for candidato in oferta.candidato_set.all %}
+            <input type="radio" id="candidato{{ forloop.counter }}" name="candidato" value="{{ candidato.id }}"/>
+            <label for="candidato{{ forloop.counter }}">
+                {{ candidato.nome }}
+                {% if candidato.is_favorite %}
+                    <img src="http://www.clipartbest.com/cliparts/dcr/MK5/dcrMK5xc9.jpeg" height="16">
+                {% endif %}
+            </label>
+            <br>
+        {% endfor %}
+        <input type="submit" value="Esolher">
+    </form>
+{% endblock %}
