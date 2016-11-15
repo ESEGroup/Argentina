@@ -5,12 +5,14 @@ O OportunidadeUFRJ procura resolver a pouca divulgação e muitas vezes a nã
 
 Dentro deste objetivo, o escopo do sistema é também uniformizar as ofertas, de forma a facilitar a sua busca, além de uniformizar também as informações curriculares dos alunos, descomplicando a visualização e decisão de recrutadores.
 
-## Como testar
-Para iniciar o servidor, basta abrir o cmd.exe ou o PowerShell e entrar na pasta em que está o arquivo manage.py. Agora, basta rodar o comando:
+## Uso
+Para iniciar o servidor abra o terminal, vá até a pasta deste repositório (onde se encontra o arquivo manage.py) e execute:
 
+```
 python manage.py runserver
+```
 
-Com isso, o servidor estará funcionando e o site poderá ser acessado em localhost:8000
+Com isso, o servidor estará funcionando e o site poderá ser acessado em `localhost:8000`
 
 ## Código
 O código deste repositório foi desenvolvido utilizando [Python](https://www.python.org/) e o web framework [Django](https://www.djangoproject.com/).
