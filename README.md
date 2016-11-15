@@ -2,7 +2,17 @@
 
 ## Sobre
 O OportunidadeUFRJ procura resolver a pouca divulgação e muitas vezes a não oferta de bolsas em tempo hábil desperdiçando oportunidades de pesquisa, extensão e estágio, bem como a perda de oportunidade para candidatura de alunos com perfil adequado a essas vagas disponíveis.
-Dentro deste objetivo, o escopo do sistema é também uniformizar as ofertas, de forma a facilitar a sua busca, além de uniformizar também as informações curriculares dos alunos, descomplicando a visualização e decisão de recrutadores.
+
+Dentro deste objetivo, o escopo do sistema é também uniformizar as ofertas, de forma a facilitar a sua busca, além de uniformizar também as informações curriculares dos alunos, descomplicando a visualização e decisão de recrutadores.
+
+## Uso
+Para iniciar o servidor abra o terminal, vá até a pasta deste repositório (onde se encontra o arquivo manage.py) e execute:
+
+```
+python manage.py runserver
+```
+
+Com isso, o servidor estará funcionando e o site poderá ser acessado em `localhost:8000`
 
 ## Código
 O código deste repositório foi desenvolvido utilizando [Python](https://www.python.org/) e o web framework [Django](https://www.djangoproject.com/).
