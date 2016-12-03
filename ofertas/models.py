@@ -17,3 +17,12 @@ class Candidato(models.Model):
 
     def __str__(self):
         return self.nome
+
+    class Usuario(models.Model):
+        nome = models.CharField(max_length=256)
+        email = models.CharField(max_length=256)
+        telefone = models.CharField(max_length=256)
+        nascimento = models.CharField(max_length=256)
+
+        def __str__(self):
+            return self.nome
