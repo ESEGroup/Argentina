@@ -33,3 +33,16 @@ class Candidato(models.Model):
 
         def __str__(self):
             return self.nome + ' - ' + self.departamento
+
+    class Aluno(Usuario):
+        estadoCivil = models.CharField(max_length=256)
+        curso = models.CharField(max_length=256)
+        periodo = models.CharField(max_length=2)
+        CRA = models.CharField(max_length=7)
+        objetivo = models.CharField(max_length=256)
+        formacao = models.CharField(max_length=256)
+        experiencia = models.CharField(max_length=1024)
+        habilidade = models.CharField(max_length=1024)
+
+        def __str__(self):
+            return self.nome + ' - ' + self.curso
