@@ -26,3 +26,10 @@ class Candidato(models.Model):
 
         def __str__(self):
             return self.nome
+
+    class ProfessorRecrutador(Usuario):
+        departamento = models.CharField(max_length=256)
+        admDepartamento = models.BooleanField(default=false)
+
+        def __str__(self):
+            return self.nome + ' - ' + self.departamento
