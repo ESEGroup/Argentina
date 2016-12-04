@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 
 class Oferta(models.Model):
@@ -21,12 +23,10 @@ class Candidato(models.Model):
         return self.nome
 
 
-class Usuario(models.Model):
+class Usuario(User):
     nome = models.CharField(max_length=256)
-    email = models.CharField(max_length=256)
     telefone = models.CharField(max_length=256)
     nascimento = models.CharField(max_length=256)
-    senha = models.CharField(max_length=1024)
 
     def __str__(self):
         return self.nome
@@ -35,6 +35,7 @@ class Usuario(models.Model):
 class ProfessorRecrutador(Usuario):
     departamento = models.CharField(max_length=256)
     admDepartamento = models.BooleanField(default=False)
+    esta_validado = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome + ' - ' + self.departamento

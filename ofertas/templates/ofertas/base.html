@@ -23,6 +23,7 @@
                     <span class="icon-bar"></span>
                 </button>
             <a class="navbar-brand" href="{% url 'ofertas:index' %}">Oportunidades UFRJ</a>
+            <a>Olá {{ username }}</a>
         </div>
 
         <!-- Items -->
@@ -59,7 +60,7 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="#">
+                    <a href="{% url 'ofertas:logout' %}">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
                         Logout
                     </a>
