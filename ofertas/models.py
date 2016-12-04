@@ -27,6 +27,7 @@ class Usuario(User):
     nome = models.CharField(max_length=256)
     telefone = models.CharField(max_length=256)
     nascimento = models.CharField(max_length=256)
+    e_aluno = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome
@@ -35,6 +36,7 @@ class Usuario(User):
 class ProfessorRecrutador(Usuario):
     departamento = models.CharField(max_length=256)
     admDepartamento = models.BooleanField(default=False)
+    identificador = models.CharField(max_length=1024)
     esta_validado = models.BooleanField(default=False)
 
     def __str__(self):
@@ -42,6 +44,7 @@ class ProfessorRecrutador(Usuario):
 
 
 class Aluno(Usuario):
+    user_id = models.CharField(max_length=1024)
     estadoCivil = models.CharField(max_length=256)
     curso = models.CharField(max_length=256)
     periodo = models.CharField(max_length=2)
@@ -50,6 +53,7 @@ class Aluno(Usuario):
     formacao = models.CharField(max_length=256)
     experiencia = models.CharField(max_length=1024)
     habilidade = models.CharField(max_length=1024)
+    identificador = models.CharField(max_length=1024)
 
     def __str__(self):
         return self.nome + ' - ' + self.curso

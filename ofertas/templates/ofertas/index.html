@@ -1,6 +1,13 @@
 {% extends 'ofertas/base.html' %}
 
 {% block body %}
+
+    {% if usuario.e_aluno == False %}
+        {% if usuario.esta_validado == False %}
+            <h2> Sua Conta ainda esta pendente, você pode somente visualizar as ofertas</h2>
+        {% endif %}
+    {% endif %}
+
     {% if all_ofertas %}
         <h2>Aqui estão as ofertas:</h2>
         <ul>

@@ -1,17 +1,32 @@
-from .models import Oferta, Usuario
+from .models import Oferta, Usuario, Aluno, ProfessorRecrutador
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.views import generic
 from django.views.generic import View
+from django.core.exceptions import ObjectDoesNotExist
+from django.db import IntegrityError
 from .forms import FormularioAluno, FormularioProfessor
 
 
 def index(request):
     if request.user.is_authenticated():
         all_ofertas = Oferta.objects.all()
-        return render(request, 'ofertas/index.html', {'all_ofertas': all_ofertas, 'username': request.user.username})
+        if request.user.username == 'admin':
+            return render(request, 'ofertas/index.html',
+                          {'all_ofertas': all_ofertas,
+                           'user': request.user})
+        try:
+            return render(request, 'ofertas/index.html',
+                      {'all_ofertas': all_ofertas,
+                       'user': request.user,
+                       'usuario': Aluno.objects.get(identificador=request.user.username)})
+        except(ObjectDoesNotExist):
+            return render(request, 'ofertas/index.html',
+                          {'all_ofertas': all_ofertas,
+                           'user': request.user,
+                           'usuario': ProfessorRecrutador.objects.get(identificador=request.user.username)})
     return redirect('ofertas:login')
 
 
@@ -28,12 +43,31 @@ class RegistroAluno(View):
 
         if form.is_valid():
 
+            aluno = Aluno()
+
             user = form.save(commit=False)
 
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
+            aluno.username = form.cleaned_data['email']
+            aluno.CRA = form.cleaned_data['CRA']
+            aluno.curso = form.cleaned_data['curso']
+            aluno.estadoCivil = form.cleaned_data['estadoCivil']
+            aluno.experiencia = form.cleaned_data['experiencia']
+            aluno.formacao = form.cleaned_data['formacao']
+            aluno.habilidade = form.cleaned_data['habilidade']
+            aluno.nascimento = form.cleaned_data['nascimento']
+            aluno.objetivo = form.cleaned_data['objetivo']
+            aluno.periodo = form.cleaned_data['periodo']
+            aluno.telefone = form.cleaned_data['telefone']
+            aluno.identificador = username
+            aluno.e_aluno = True
+
             user.set_password(password)
+
+            aluno.save()
+
             user.save()
 
             user = authenticate(username=username, password=password)
@@ -45,6 +79,7 @@ class RegistroAluno(View):
                     return redirect('ofertas:index')
 
         return render(request, self.template_name, {'form': form})
+
 
 class RegistroProfessor(View):
     form_class = FormularioProfessor
@@ -59,12 +94,25 @@ class RegistroProfessor(View):
 
         if form.is_valid():
 
+            professor = ProfessorRecrutador()
+
             user = form.save(commit=False)
+
+            professor.username = form.cleaned_data['email']
+            professor.nascimento = form.cleaned_data['nascimento']
+            professor.departamento = form.cleaned_data['departamento']
+            professor.admDepartamento = form.cleaned_data['admDepartamento']
+            professor.telefone = form.cleaned_data['telefone']
+            professor.esta_validado = True
+            professor.identificador = form.cleaned_data['username']
+            professor.e_aluno = False
 
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
             user.set_password(password)
+
+            professor.save()
             user.save()
 
             user = authenticate(username=username, password=password)
