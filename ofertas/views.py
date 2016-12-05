@@ -215,3 +215,16 @@ def ValidarProfessor(request, oferta_id):
     professorObj1.save()
     professorObj2.save()
     return redirect('ofertas:professores')
+
+def AdmDepartamento(request, oferta_id):
+    professorObj1 = ProfessorRecrutador.objects.get(id=oferta_id)
+    id2 = int(oferta_id) + 1
+    professorObj2 = ProfessorRecrutador.objects.get(id=id2)
+    if (professorObj1.admDepartamento or professorObj2.admDepartamento):
+        professorObj1.admDepartamento = False
+    else:
+        professorObj1.admDepartamento = True
+    professorObj2.admDepartamento = professorObj1.admDepartamento
+    professorObj1.save()
+    professorObj2.save()
+    return redirect('ofertas:professores')
