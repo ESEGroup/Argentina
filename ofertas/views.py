@@ -29,6 +29,18 @@ def index(request):
                            'usuario': ProfessorRecrutador.objects.get(identificador=request.user.username)})
     return redirect('ofertas:login')
 
+def MinhasOfertas(request):
+    all_ofertas = Oferta.objects.filter(criador=request.user.username)
+    return render(request, 'ofertas/index.html',
+                      {'all_ofertas': all_ofertas,
+                       'user': request.user,
+                        'minha': True})
+
+def DeletarOferta(request, oferta_id):
+    oferta = Oferta.objects.get(id=oferta_id)
+    if(oferta.criador == request.user.username):
+        oferta.delete()
+    return redirect('ofertas:index')
 
 class RegistroAluno(View):
     form_class = FormularioAluno

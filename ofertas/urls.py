@@ -19,6 +19,10 @@ urlpatterns = [
 
     url(r'^criar/$', views.CriarOferta.as_view(), name='criarofertas'),
 
+    url(r'^minhas/$', views.MinhasOfertas, name='minhasofertas'),
+
+    url(r'^deletar/(?P<oferta_id>[0-9]+)$', views.DeletarOferta, name='deletar'),
+
     # /ofertas/71/ (oferta ID)
     url(r'^(?P<oferta_id>[0-9]+)/?$', views.visualizarOferta, name='detail'),
 

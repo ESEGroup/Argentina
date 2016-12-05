@@ -29,11 +29,20 @@
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="{% url 'ofertas:index' %}">
-                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;
-                        Minhas Inscrições
+                <li class="">
+            {% if usuario.e_aluno == False %}
+                {% if usuario.esta_validado == True %}
+                    <a href=" {% url 'ofertas:minhasofertas' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                        Minhas Ofertas
                     </a>
+                {% endif %}
+            {% else %}
+                <a href=" {% url 'ofertas:index' %}">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                        Minhas Inscrições
+                </a>
+            {% endif %}
                 </li>
                 <li class="">
                     <a href="">
