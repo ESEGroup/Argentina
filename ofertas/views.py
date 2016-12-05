@@ -7,7 +7,7 @@ from django.views import generic
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
-from .forms import FormularioAluno, FormularioProfessor
+from .forms import FormularioAluno, FormularioProfessor, FormularioCriarOferta
 
 
 def index(request):
@@ -51,6 +51,7 @@ class RegistroAluno(View):
             password = form.cleaned_data['password']
 
             aluno.username = form.cleaned_data['email']
+            aluno.nome = form.cleaned_data['nome']
             aluno.CRA = form.cleaned_data['CRA']
             aluno.curso = form.cleaned_data['curso']
             aluno.estadoCivil = form.cleaned_data['estadoCivil']
@@ -99,11 +100,12 @@ class RegistroProfessor(View):
             user = form.save(commit=False)
 
             professor.username = form.cleaned_data['email']
+            professor.nome = form.cleaned_data['nome']
             professor.nascimento = form.cleaned_data['nascimento']
             professor.departamento = form.cleaned_data['departamento']
             professor.admDepartamento = form.cleaned_data['admDepartamento']
             professor.telefone = form.cleaned_data['telefone']
-            professor.esta_validado = True
+            professor.esta_validado = form.cleaned_data['esta_validado']
             professor.identificador = form.cleaned_data['username']
             professor.e_aluno = False
 
@@ -125,9 +127,31 @@ class RegistroProfessor(View):
 
         return render(request, self.template_name, {'form': form})
 
+class CriarOferta(View):
+    form_class = FormularioCriarOferta
+    template_name = 'ofertas/formulario_criar_oferta.html'
 
-def criarOferta(request):
-    return render(request)
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+
+            bolsa = Oferta()
+
+            bolsa.criador = request.user.username
+            bolsa.titulo = form.cleaned_data['titulo']
+            bolsa.descricao = form.cleaned_data['descricao']
+            bolsa.imagem = form.cleaned_data['imagem']
+
+            bolsa.save()
+
+            return redirect('ofertas:detail', oferta_id=bolsa.pk)
+
+        return render(request, self.template_name, {'form': form})
 
 
 def visualizarOferta(request, oferta_id):

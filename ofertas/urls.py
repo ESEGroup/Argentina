@@ -1,6 +1,5 @@
 from django.conf.urls import url
 from . import views
-from .forms import UserLoginForm
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
@@ -17,6 +16,8 @@ urlpatterns = [
 
     # /ofertas/
     url(r'^$', views.index, name='index'),
+
+    url(r'^criar/$', views.CriarOferta.as_view(), name='criarofertas'),
 
     # /ofertas/71/ (oferta ID)
     url(r'^(?P<oferta_id>[0-9]+)/?$', views.visualizarOferta, name='detail'),

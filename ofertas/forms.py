@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from .models import Aluno, ProfessorRecrutador
+from .models import Aluno, ProfessorRecrutador, Oferta
 
 
 class FormularioAluno(forms.ModelForm):
@@ -22,6 +22,7 @@ class FormularioAluno(forms.ModelForm):
                   'experiencia',
                   'habilidade']
 
+
 class FormularioProfessor(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
@@ -29,11 +30,14 @@ class FormularioProfessor(forms.ModelForm):
         model = ProfessorRecrutador
         fields = ['username',
                   'password',
+                  'nome',
                   'email',
                   'telefone',
                   'nascimento',
                   'departamento',
-                  'admDepartamento']
+                  'admDepartamento',
+                  'esta_validado']
+
 
 class UserLoginForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -41,3 +45,12 @@ class UserLoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'password']
+
+
+class FormularioCriarOferta(forms.ModelForm):
+
+    class Meta:
+        model = Oferta
+        fields = ['titulo',
+                  'descricao',
+                  'imagem']

@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                 </button>
             <a class="navbar-brand" href="{% url 'ofertas:index' %}">Oportunidades UFRJ</a>
-            <a>Olá {{ user.username }}</a>
+            <a>Olá {{ usuario.nome }}</a>
         </div>
 
         <!-- Items -->
@@ -52,13 +52,18 @@
                 </div>
             </form>
 
+
             <ul class="nav navbar-nav navbar-right">
+             {% if usuario.e_aluno == False %}
+                {% if usuario.esta_validado == True %}
                 <li class="">
-                    <a href="#">
+                    <a href=" {% url 'ofertas:criarofertas' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
                         Criar Oferta
                     </a>
                 </li>
+                {% endif %}
+            {% endif %}
                 <li class="">
                     <a href="{% url 'ofertas:logout' %}">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
