@@ -23,13 +23,27 @@
                     <span class="icon-bar"></span>
                 </button>
             <a class="navbar-brand" href="{% url 'ofertas:index' %}">Oportunidades UFRJ</a>
-            <a>Olá {{ usuario.nome }}</a>
+            {% if request.user.is_superuser %}
+                <a>Olá {{ request.user.username }}</a>
+            {% else %}
+                <a>Olá {{ usuario.nome }}</a>
+            {% endif %}
         </div>
 
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
                 <li class="">
+            {% if request.user.is_superuser %}
+                    <a href=" {% url 'ofertas:minhasofertas' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                        Ofertas
+                    </a>
+                    <a href=" {% url 'ofertas:professores' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                        Professores
+                    </a>
+            {% endif %}
             {% if usuario.e_aluno == False %}
                 {% if usuario.esta_validado == True %}
                     <a href=" {% url 'ofertas:minhasofertas' %}">
@@ -37,7 +51,6 @@
                         Minhas Ofertas
                     </a>
                 {% endif %}
-
                 {% if usuario.admDepartamento == True %}
                     <a href=" {% url 'ofertas:professores' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
@@ -70,6 +83,14 @@
 
 
             <ul class="nav navbar-nav navbar-right">
+                {% if request.user.is_superuser %}
+                <li class="">
+                    <a href=" {% url 'ofertas:criarofertas' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                        Criar Oferta
+                    </a>
+                </li>
+                {% endif %}
              {% if usuario.e_aluno == False %}
                 {% if usuario.esta_validado == True %}
                 <li class="">

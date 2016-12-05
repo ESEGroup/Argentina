@@ -13,7 +13,7 @@
         <ul>
             {% for oferta in all_ofertas %}
                 <li><a href="{% url 'ofertas:detail' oferta.id %}"> {{ oferta.titulo }} </a>
-                {%if minha == True %}
+                {%if minha == True or request.user.is_superuser %}
                       -
                     <a href="{% url 'ofertas:deletar' oferta.id%}">Deletar</a>
                 {% endif %}

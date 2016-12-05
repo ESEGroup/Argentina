@@ -38,7 +38,7 @@ def MinhasOfertas(request):
 
 def DeletarOferta(request, oferta_id):
     oferta = Oferta.objects.get(id=oferta_id)
-    if(oferta.criador == request.user.username):
+    if(oferta.criador == request.user.username or request.user.is_superuser):
         oferta.delete()
     return redirect('ofertas:index')
 
@@ -117,7 +117,7 @@ class RegistroProfessor(View):
             professor.departamento = form.cleaned_data['departamento']
             professor.admDepartamento = form.cleaned_data['admDepartamento']
             professor.telefone = form.cleaned_data['telefone']
-            professor.esta_validado = form.cleaned_data['esta_validado']
+            professor.esta_validado = False
             professor.identificador = form.cleaned_data['username']
             professor.e_aluno = False
 
@@ -188,12 +188,17 @@ def favorite(request, oferta_id):
 
 def Professores(request):
     professoresDoubled = ProfessorRecrutador.objects.filter(admDepartamento=False)
-    professores = [professoresDoubled[0]]
-    counter = 0
-    for professor in professoresDoubled:
-        if (not(counter % 2) and (counter > 1)):
-            professores += [professoresDoubled[counter]]
-        counter += 1
+    professores = professoresDoubled
+    if (request.user.is_superuser):
+        professoresDoubled = ProfessorRecrutador.objects.all()
+    if (professoresDoubled.count() > 0):
+        professores = [professoresDoubled[0]]
+        counter = 0
+        for professor in professoresDoubled:
+            if (not(counter % 2) and (counter > 1)):
+                professores += [professoresDoubled[counter]]
+            counter += 1
+
     return render(request, 'ofertas/professores.html',
                   {'professores': professores,
                    'user': request.user})
