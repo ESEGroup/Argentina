@@ -37,6 +37,13 @@
                         Minhas Ofertas
                     </a>
                 {% endif %}
+
+                {% if usuario.admDepartamento == True %}
+                    <a href=" {% url 'ofertas:professores' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                        Professores
+                    </a>
+                {% endif %}
             {% else %}
                 <a href=" {% url 'ofertas:index' %}">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;

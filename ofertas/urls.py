@@ -29,6 +29,10 @@ urlpatterns = [
     # /ofertas/71/favorite/ (oferta ID)
     url(r'^(?P<oferta_id>[0-9]+)/favorite/?$', views.favorite, name='favorite'),
 
+    url(r'^professores/$', views.Professores, name='professores'),
+
+    url(r'^validar/(?P<oferta_id>[0-9]+)$', views.ValidarProfessor, name='validarProfessor'),
+
     url(r'^registroaluno/$', views.RegistroAluno.as_view(), name='registroaluno'),
 
     url(r'^registroprofessor/$', views.RegistroProfessor.as_view(), name='registroprofessor'),

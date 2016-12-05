@@ -1,0 +1,21 @@
+{% extends 'ofertas/base.html' %}
+
+{% block body %}
+
+    {% if professores %}
+        <h2>Professores:</h2>
+        <ul>
+            {% for professor in professores %}
+                    <li> {{ professor.nome }}  -
+                    {%if professor.esta_validado == True %}
+                        <a href="{% url 'ofertas:validarProfessor' professor.id %}">Invalidar</a>
+                    {% else %}
+                        <a href="{% url 'ofertas:validarProfessor' professor.id %}">Validar</a>
+                    {% endif %}
+                    </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2>Não há professores cadastrados.</h2>
+    {% endif %}
+{% endblock %}

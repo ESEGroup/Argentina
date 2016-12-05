@@ -184,3 +184,28 @@ def favorite(request, oferta_id):
         selected_candidato.is_favorite = True
         selected_candidato.save()
         return render(request, 'ofertas/visualizarOferta.html', {'oferta': oferta})
+
+def Professores(request):
+    professoresDoubled = ProfessorRecrutador.objects.filter(admDepartamento=False)
+    professores = [professoresDoubled[0]]
+    counter = 0
+    for professor in professoresDoubled:
+        if (not(counter % 2) and (counter > 1)):
+            professores += [professoresDoubled[counter]]
+        counter += 1
+    return render(request, 'ofertas/professores.html',
+                  {'professores': professores,
+                   'user': request.user})
+
+def ValidarProfessor(request, oferta_id):
+    professorObj1 = ProfessorRecrutador.objects.get(id=oferta_id)
+    id2 = int(oferta_id) + 1
+    professorObj2 = ProfessorRecrutador.objects.get(id=id2)
+    if(professorObj1.esta_validado or professorObj2.esta_validado):
+        professorObj1.esta_validado = False
+    else:
+        professorObj1.esta_validado = True
+    professorObj2.esta_validado = professorObj1.esta_validado
+    professorObj1.save()
+    professorObj2.save()
+    return redirect('ofertas:professores')

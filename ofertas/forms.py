@@ -35,8 +35,7 @@ class FormularioProfessor(forms.ModelForm):
                   'telefone',
                   'nascimento',
                   'departamento',
-                  'admDepartamento',
-                  'esta_validado']
+                  'admDepartamento']
 
 
 class UserLoginForm(forms.ModelForm):
