@@ -154,21 +154,22 @@ class CriarOferta(View):
 
             bolsa = Oferta()
 
-            bolsa.criador = request.user.username
+            bolsa.criador = request.user.id
             bolsa.titulo = form.cleaned_data['titulo']
             bolsa.descricao = form.cleaned_data['descricao']
             bolsa.imagem = form.cleaned_data['imagem']
 
             bolsa.save()
 
-            return redirect('ofertas:detail', oferta_id=bolsa.pk)
+            return redirect('ofertas:detail',
+                            oferta_id=bolsa.pk)
 
         return render(request, self.template_name, {'form': form})
 
 
 def visualizarOferta(request, oferta_id):
     oferta = get_object_or_404(Oferta, pk=oferta_id)
-    return render(request, 'ofertas/visualizarOferta.html', {'oferta': oferta})
+    return render(request, 'ofertas/visualizarOferta.html', {'oferta': oferta, 'criador': ProfessorRecrutador.objects.get(id=oferta.criador).nome})
 
 
 def favorite(request, oferta_id):
