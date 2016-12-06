@@ -25,12 +25,13 @@
             <a class="navbar-brand" href="{% url 'ofertas:index' %}">Oportunidades UFRJ</a>
             {% if request.user.is_superuser %}
                 <a>Olá {{ request.user.username }}</a>
-            {% else %}
+            {% elif usuario %}
                 <a>Olá {{ usuario.nome }}</a>
             {% endif %}
         </div>
 
         <!-- Items -->
+        {% if usuario or request.user %}
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
                 <li class="">
@@ -110,6 +111,7 @@
             </ul>
 
         </div>
+        {% endif %}
     </div>
 </nav>
 {% block body %}

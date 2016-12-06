@@ -56,7 +56,6 @@ class RegistroAluno(View):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
-            aluno.username = form.cleaned_data['email']
             aluno.nome = form.cleaned_data['nome']
             aluno.CRA = form.cleaned_data['CRA']
             aluno.curso = form.cleaned_data['curso']
@@ -73,9 +72,11 @@ class RegistroAluno(View):
 
             user.set_password(password)
 
-            aluno.save()
-
             user.save()
+
+            aluno.username = user.id
+
+            aluno.save()
 
             user = authenticate(username=username, password=password)
 
@@ -105,7 +106,6 @@ class RegistroProfessor(View):
 
             user = form.save(commit=False)
 
-            professor.username = form.cleaned_data['email']
             professor.nome = form.cleaned_data['nome']
             professor.nascimento = form.cleaned_data['nascimento']
             professor.departamento = form.cleaned_data['departamento']
@@ -120,8 +120,11 @@ class RegistroProfessor(View):
 
             user.set_password(password)
 
-            professor.save()
             user.save()
+
+            professor.username = user.id
+
+            professor.save()
 
             user = authenticate(username=username, password=password)
 
