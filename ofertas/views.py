@@ -109,7 +109,7 @@ class RegistroProfessor(View):
             professor.nome = form.cleaned_data['nome']
             professor.nascimento = form.cleaned_data['nascimento']
             professor.departamento = form.cleaned_data['departamento']
-            professor.admDepartamento = form.cleaned_data['admDepartamento']
+            professor.admDepartamento = False
             professor.telefone = form.cleaned_data['telefone']
             professor.esta_validado = False
             professor.identificador = form.cleaned_data['username']
@@ -256,6 +256,15 @@ def Candidatar(request, oferta_id):
 
     return redirect('ofertas:detail',
                   oferta_id=oferta_id)
+
+def Perfil(request):
+    if (request.user.is_superuser):
+        usuario = request.user
+    else:
+        usuario = ObterUsuario(request)
+    return render(request,
+                  'ofertas/perfil.html',
+                  {'usuario': usuario})
 
 def ObterUsuario(request):
     try:

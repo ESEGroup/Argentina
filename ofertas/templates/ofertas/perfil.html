@@ -1,0 +1,52 @@
+{% extends 'ofertas/base.html' %}
+
+{% block body %}
+<center>
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                {% if request.user.is_superuser %}
+                                    Admnistrador Geral <br> <br>
+                                {% endif %}
+                                Nome:  {{ usuario.nome }} <br> <br>
+                                Email: {{ usuario.email }} <br> <br>
+                                Login: {{ request.user.username }} <br> <br>
+                                Telefone:  {{ usuario.nome }} <br> <br>
+                                Nascimento:  {{ usuario.nome }} <br> <br>
+                                {% if usuario.e_aluno %}
+                                    Estado Civil: {{ usuario.estadoCivil }} <br> <br>
+                                    Curso: {{ usuario.periodo }} <br> <br>
+                                    Periodo: {{ usuario.periodo }} <br> <br>
+                                    CRA: {{ usuario.CRA }} <br> <br>
+                                    Objetivo: {{ usuario.objetivo }} <br> <br>
+                                    Formação: {{ usuario.formacao }} <br> <br>
+                                    Experiência: {{ usuario.experiencia }} <br> <br>
+                                    Habilidade: {{ usuario.habilidade }}
+                                {% else %}
+                                    Departamento: {{ usuario.departamento }} <br> <br>
+                                {% if usuario.esta_validado %}
+                                    Conta Conferida: Sim <br> <br>
+                                {% else %}
+                                    Conta Conferida: Não <br> <br>
+                                {% endif %}
+                                {% if usuario.admDepartamento %}
+                                    Administrador de Departamento: Sim
+                                {% else %}
+                                    Administrador de Departamento: Não
+                                {% endif %}
+                                {% endif %}
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+{% endblock %}

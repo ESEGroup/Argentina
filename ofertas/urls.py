@@ -41,6 +41,8 @@ urlpatterns = [
 
     url(r'^candidatar/(?P<oferta_id>[0-9]+)$', views.Candidatar, name='candidatar'),
 
+    url(r'^perfil/', views.Perfil, name='perfil'),
+
     # url(r'^logout/$', views.logOut, name='logout'),
 
 ]
