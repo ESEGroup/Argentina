@@ -2,14 +2,24 @@
 {% block title %}Detalhes da Oportunidade{% endblock %}
 
 {% block body %}
-    <img src="{{ oferta.imagem }}" height="200">
+    <img src="{{ oferta.imagem }}" height="200"> {{ oferta.descricao }}
 
     <h1>{{ oferta.titulo }}</h1>
-    <h3>Ofertante: {{ criador }}</h3>
+    <h3>Ofertante: {{ criador.nome }}</h3>
 
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
+
+    {% if usuario.e_aluno %}
+        {{ e_candidato }}
+        {% if e_candidato %}
+            <a href="{% url 'ofertas:candidatar' oferta.id %}" class="btn btn-default">Remover Candidatura</a>
+        {% else %}
+            <a href="{% url 'ofertas:candidatar' oferta.id %}" class="btn btn-default">Candidatar-se</a>
+        {% endif %}
+
+    {% elif criador.id == usuario.id or request.user.id %}
 
     <form action="{% url 'ofertas:favorite' oferta.id %}" method="post">
         {% csrf_token %}
@@ -24,6 +34,9 @@
             &nbsp;Curso: {{ candidato.curso }}
             <br>
         {% endfor %}
-        <input type="submit" value="Escolher">
+        {% if usuario.e_aluno %}
+            <input type="submit" value="Escolher" >
+        {% endif %}
     </form>
+    {% endif %}
 {% endblock %}

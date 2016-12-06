@@ -1,4 +1,4 @@
-from .models import Oferta, Usuario, Aluno, ProfessorRecrutador
+from .models import Oferta, Usuario, Aluno, ProfessorRecrutador, Candidato
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.urlresolvers import reverse_lazy
@@ -13,28 +13,22 @@ from .forms import FormularioAluno, FormularioProfessor, FormularioCriarOferta
 def index(request):
     if request.user.is_authenticated():
         all_ofertas = Oferta.objects.all()
-        if request.user.username == 'admin':
+        if request.user.is_superuser:
             return render(request, 'ofertas/index.html',
                           {'all_ofertas': all_ofertas,
                            'user': request.user})
-        try:
-            return render(request, 'ofertas/index.html',
+        return render(request, 'ofertas/index.html',
                       {'all_ofertas': all_ofertas,
                        'user': request.user,
-                       'usuario': Aluno.objects.get(identificador=request.user.username)})
-        except(ObjectDoesNotExist):
-            return render(request, 'ofertas/index.html',
-                          {'all_ofertas': all_ofertas,
-                           'user': request.user,
-                           'usuario': ProfessorRecrutador.objects.get(identificador=request.user.username)})
+                       'usuario': ObterUsuario(request)})
     return redirect('ofertas:login')
 
 def MinhasOfertas(request):
     all_ofertas = Oferta.objects.filter(criador=request.user.username)
     return render(request, 'ofertas/index.html',
                       {'all_ofertas': all_ofertas,
-                       'user': request.user,
-                        'minha': True})
+                        'minha': True,
+                       'usuario':ObterUsuario(request)})
 
 def DeletarOferta(request, oferta_id):
     oferta = Oferta.objects.get(id=oferta_id)
@@ -145,7 +139,7 @@ class CriarOferta(View):
 
     def get(self, request):
         form = self.form_class(None)
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, 'usuario':ObterUsuario(request)})
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -162,14 +156,25 @@ class CriarOferta(View):
             bolsa.save()
 
             return redirect('ofertas:detail',
-                            oferta_id=bolsa.pk)
+                            oferta_id=bolsa.pk,)
 
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, 'usuario':ObterUsuario(request)})
 
 
 def visualizarOferta(request, oferta_id):
     oferta = get_object_or_404(Oferta, pk=oferta_id)
-    return render(request, 'ofertas/visualizarOferta.html', {'oferta': oferta, 'criador': ProfessorRecrutador.objects.get(id=oferta.criador).nome})
+    e_candidato = False
+    usuario = ObterUsuario(request)
+    if (usuario.e_aluno):
+        candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
+        for candidato in candidatos:
+            if ((candidato.candidato_id == usuario.id) or (candidato.candidato_id == request.user.id)):
+                e_candidato = True
+    return render(request, 'ofertas/visualizarOferta.html',
+                  {'oferta': oferta,
+                   'criador': ProfessorRecrutador.objects.get(id=oferta.criador),
+                   'usuario' : ObterUsuario(request),
+                   'e_candidato': e_candidato})
 
 
 def favorite(request, oferta_id):
@@ -201,7 +206,7 @@ def Professores(request):
 
     return render(request, 'ofertas/professores.html',
                   {'professores': professores,
-                   'user': request.user})
+                   'usuario': ObterUsuario(request)})
 
 def ValidarProfessor(request, oferta_id):
     professorObj1 = ProfessorRecrutador.objects.get(id=oferta_id)
@@ -209,6 +214,7 @@ def ValidarProfessor(request, oferta_id):
     professorObj2 = ProfessorRecrutador.objects.get(id=id2)
     if(professorObj1.esta_validado or professorObj2.esta_validado):
         professorObj1.esta_validado = False
+        professorObj1.admDepartamento = False
     else:
         professorObj1.esta_validado = True
     professorObj2.esta_validado = professorObj1.esta_validado
@@ -216,9 +222,9 @@ def ValidarProfessor(request, oferta_id):
     professorObj2.save()
     return redirect('ofertas:professores')
 
-def AdmDepartamento(request, oferta_id):
-    professorObj1 = ProfessorRecrutador.objects.get(id=oferta_id)
-    id2 = int(oferta_id) + 1
+def ValidarAdmDepartamento(request, professor_id):
+    professorObj1 = ProfessorRecrutador.objects.get(id=professor_id)
+    id2 = int(professor_id) + 1
     professorObj2 = ProfessorRecrutador.objects.get(id=id2)
     if (professorObj1.admDepartamento or professorObj2.admDepartamento):
         professorObj1.admDepartamento = False
@@ -228,3 +234,31 @@ def AdmDepartamento(request, oferta_id):
     professorObj1.save()
     professorObj2.save()
     return redirect('ofertas:professores')
+
+def Candidatar(request, oferta_id):
+    candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
+    usuario = ObterUsuario(request)
+    try:
+        candidatos.get(candidato_id=usuario.id).delete()
+    except(ObjectDoesNotExist):
+        try:
+            candidatos.get(candidato_id=request.user.id).delete()
+        except(ObjectDoesNotExist):
+            candidato = Candidato(oferta=Oferta.objects.get(id=oferta_id),
+                                  candidato_id=usuario.id,
+                                  nome=Usuario.objects.get(id=usuario.id).nome,
+                                  curso=usuario.curso,
+                                  is_favorite=False)
+            candidato.save()
+
+    return redirect('ofertas:detail',
+                  oferta_id=oferta_id)
+
+def ObterUsuario(request):
+    try:
+        return Aluno.objects.get(identificador=request.user.username)
+    except(ObjectDoesNotExist):
+        try:
+            return ProfessorRecrutador.objects.get(identificador=request.user.username)
+        except(ObjectDoesNotExist):
+            return request.user

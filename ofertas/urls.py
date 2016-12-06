@@ -37,7 +37,9 @@ urlpatterns = [
 
     url(r'^registroprofessor/$', views.RegistroProfessor.as_view(), name='registroprofessor'),
 
-    url(r'^admdepartamento/(?P<oferta_id>[0-9]+)$', views.AdmDepartamento, name='AdmDepartamento'),
+    url(r'^admdepartamento/(?P<professor_id>[0-9]+)$', views.ValidarAdmDepartamento, name='AdmDepartamento'),
+
+    url(r'^candidatar/(?P<oferta_id>[0-9]+)$', views.Candidatar, name='candidatar'),
 
     # url(r'^logout/$', views.logOut, name='logout'),
 

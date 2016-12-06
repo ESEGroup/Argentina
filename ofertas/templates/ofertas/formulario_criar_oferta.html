@@ -1,22 +1,30 @@
-<div class="container-fluid">
+{% extends 'ofertas/base.html' %}
 
-    <div class="row">
+{% block body %}
 
-        <div class="col-sm-12 col-md-7">
-            <div class="panel panel-default">
-                <div class="panel-body">
+<center>
+    <div class="container-fluid">
 
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {% include 'ofertas/form-template.html' %}
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-sucess">Criar</button>
+        <div class="row">
+
+            <div class="col-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% include 'ofertas/form-template.html' %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-sucess">Criar</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</center>
+
+{% endblock %}

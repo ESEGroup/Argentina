@@ -49,8 +49,9 @@ class Oferta(models.Model):
 
 class Candidato(models.Model):
     oferta = models.ForeignKey(Oferta, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=200)
     curso = models.CharField(max_length=100)
-    nome = models.CharField(max_length=250)
+    candidato_id = models.CharField(max_length=200)
     is_favorite = models.BooleanField(default=False)
 
     def __str__(self):

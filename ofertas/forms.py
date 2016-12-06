@@ -11,6 +11,7 @@ class FormularioAluno(forms.ModelForm):
         fields = ['username',
                   'password',
                   'email',
+                  'nome',
                   'telefone',
                   'nascimento',
                   'estadoCivil',
