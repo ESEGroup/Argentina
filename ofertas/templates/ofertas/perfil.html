@@ -15,13 +15,13 @@
                                     Admnistrador Geral <br> <br>
                                 {% endif %}
                                 Nome:  {{ usuario.nome }} <br> <br>
-                                Email: {{ usuario.email }} <br> <br>
+                                Email: {{ request.user.email }} <br> <br>
                                 Login: {{ request.user.username }} <br> <br>
-                                Telefone:  {{ usuario.nome }} <br> <br>
-                                Nascimento:  {{ usuario.nome }} <br> <br>
+                                Telefone:  {{ usuario.telefone }} <br> <br>
+                                Nascimento:  {{ usuario.nascimento }} <br> <br>
                                 {% if usuario.e_aluno %}
                                     Estado Civil: {{ usuario.estadoCivil }} <br> <br>
-                                    Curso: {{ usuario.periodo }} <br> <br>
+                                    Curso: {{ usuario.curso }} <br> <br>
                                     Periodo: {{ usuario.periodo }} <br> <br>
                                     CRA: {{ usuario.CRA }} <br> <br>
                                     Objetivo: {{ usuario.objetivo }} <br> <br>
@@ -41,7 +41,12 @@
                                     Administrador de Departamento: Não
                                 {% endif %}
                                 {% endif %}
-                                </div>
+                                </div> <br> <br>
+                                {% if usuario.e_aluno %}
+                                    <a href="{% url 'ofertas:alterarperfil' %}" class="btn btn-default">Editar Perfil</a>
+                                {% else %}
+                                    <a href="{% url 'ofertas:alterarperfil' %}" class="btn btn-default">Editar Perfil</a>
+                                {% endif %}
                             </div>
                     </div>
                 </div>

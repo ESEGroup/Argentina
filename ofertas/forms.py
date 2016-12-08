@@ -23,6 +23,22 @@ class FormularioAluno(forms.ModelForm):
                   'experiencia',
                   'habilidade']
 
+class FormularioMudancaAluno(forms.ModelForm):
+
+    class Meta:
+        model = Aluno
+        fields = ['email',
+                  'nome',
+                  'telefone',
+                  'nascimento',
+                  'estadoCivil',
+                  'curso',
+                  'periodo',
+                  'CRA',
+                  'objetivo',
+                  'formacao',
+                  'experiencia',
+                  'habilidade']
 
 class FormularioProfessor(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -32,6 +48,16 @@ class FormularioProfessor(forms.ModelForm):
         fields = ['username',
                   'password',
                   'nome',
+                  'email',
+                  'telefone',
+                  'nascimento',
+                  'departamento']
+
+class FormularioMudancaProfessor(forms.ModelForm):
+
+    class Meta:
+        model = ProfessorRecrutador
+        fields = ['nome',
                   'email',
                   'telefone',
                   'nascimento',

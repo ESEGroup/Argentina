@@ -7,7 +7,8 @@ from django.views import generic
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
-from .forms import FormularioAluno, FormularioProfessor, FormularioCriarOferta
+from django.forms import modelform_factory
+from .forms import FormularioAluno, FormularioProfessor, FormularioCriarOferta, FormularioMudancaAluno, FormularioMudancaProfessor
 
 
 def index(request):
@@ -38,69 +39,155 @@ def DeletarOferta(request, oferta_id):
 
 class RegistroAluno(View):
     form_class = FormularioAluno
+    form_class_mudanca = FormularioMudancaAluno
     template_name = 'ofertas/formulario_registro.html'
 
     def get(self, request):
-        form = self.form_class(None)
+        usuario = ObterUsuario(request)
+        if request.user.is_authenticated:
+            form = self.form_class_mudanca(initial={'nome' : usuario.nome,
+                                            'CRA' : usuario.CRA,
+                                            'username' : request.user.username,
+                                            'email' : request.user.email,
+                                            'curso' : usuario.curso,
+                                            'estadoCivil' : usuario.estadoCivil,
+                                            'experiencia' : usuario.experiencia,
+                                            'formacao' : usuario.formacao,
+                                            'habilidade' : usuario.habilidade,
+                                            'nascimento' : usuario.nascimento,
+                                            'objetivo' : usuario.objetivo,
+                                            'periodo' : usuario.periodo,
+                                            'telefone' : usuario.telefone})
+
+        else:
+            form = self.form_class(None)
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
         form = self.form_class(request.POST)
 
-        if form.is_valid():
+        if form.is_valid() or request.user.is_authenticated:
 
-            aluno = Aluno()
+            if (request.user.is_authenticated):
+                aluno = ObterUsuario(request)
+                nome = form.cleaned_data['nome']
+                email = form.cleaned_data['email']
+                CRA = form.cleaned_data['CRA']
+                curso = form.cleaned_data['curso']
+                estadoCivil = form.cleaned_data['estadoCivil']
+                experiencia = form.cleaned_data['experiencia']
+                formacao = form.cleaned_data['formacao']
+                habilidade = form.cleaned_data['habilidade']
+                nascimento = form.cleaned_data['nascimento']
+                objetivo = form.cleaned_data['objetivo']
+                periodo = form.cleaned_data['periodo']
+                telefone = form.cleaned_data['telefone']
+                if (nome != ''):
+                    aluno.nome = nome
+                if(email != ''):
+                    request.user.email = email
+                    request.user.save()
+                if (CRA != ''):
+                    aluno.CRA = CRA
+                if (curso != ''):
+                    aluno.curso = curso
+                if (estadoCivil != ''):
+                    aluno.estadoCivil = estadoCivil
+                if (experiencia != ''):
+                    aluno.experiencia = experiencia
+                if (formacao != ''):
+                    aluno.formacao = formacao
+                if (habilidade != ''):
+                    aluno.habilidade = habilidade
+                if (nascimento != ''):
+                    aluno.nascimento = nascimento
+                if (objetivo != ''):
+                    aluno.objetivo = objetivo
+                if (periodo != ''):
+                    aluno.periodo = periodo
+                if (telefone != ''):
+                    aluno.telefone = telefone
+                aluno.save()
+                return redirect('ofertas:perfil')
+            else:
+                aluno = Aluno()
 
-            user = form.save(commit=False)
+                user = form.save(commit=False)
 
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
 
-            aluno.nome = form.cleaned_data['nome']
-            aluno.CRA = form.cleaned_data['CRA']
-            aluno.curso = form.cleaned_data['curso']
-            aluno.estadoCivil = form.cleaned_data['estadoCivil']
-            aluno.experiencia = form.cleaned_data['experiencia']
-            aluno.formacao = form.cleaned_data['formacao']
-            aluno.habilidade = form.cleaned_data['habilidade']
-            aluno.nascimento = form.cleaned_data['nascimento']
-            aluno.objetivo = form.cleaned_data['objetivo']
-            aluno.periodo = form.cleaned_data['periodo']
-            aluno.telefone = form.cleaned_data['telefone']
-            aluno.identificador = username
-            aluno.e_aluno = True
+                aluno.nome = form.cleaned_data['nome']
+                aluno.CRA = form.cleaned_data['CRA']
+                aluno.curso = form.cleaned_data['curso']
+                aluno.estadoCivil = form.cleaned_data['estadoCivil']
+                aluno.experiencia = form.cleaned_data['experiencia']
+                aluno.formacao = form.cleaned_data['formacao']
+                aluno.habilidade = form.cleaned_data['habilidade']
+                aluno.nascimento = form.cleaned_data['nascimento']
+                aluno.objetivo = form.cleaned_data['objetivo']
+                aluno.periodo = form.cleaned_data['periodo']
+                aluno.telefone = form.cleaned_data['telefone']
+                aluno.identificador = username
+                aluno.e_aluno = True
 
-            user.set_password(password)
+                user.set_password(password)
 
-            user.save()
+                user.save()
 
-            aluno.username = user.id
+                aluno.username = user.id
 
-            aluno.save()
+                aluno.save()
 
-            user = authenticate(username=username, password=password)
+                user = authenticate(username=username, password=password)
 
-            if user is not None:
+                if user is not None:
 
-                if user.is_active:
-                    login(request, user)
-                    return redirect('ofertas:index')
+                   if user.is_active:
+                      login(request, user)
+                      return redirect('ofertas:index')
 
         return render(request, self.template_name, {'form': form})
 
 
 class RegistroProfessor(View):
     form_class = FormularioProfessor
+    form_class_mudanca = FormularioMudancaProfessor
     template_name = 'ofertas/formulario_registro.html'
 
     def get(self, request):
-        form = self.form_class(None)
+        usuario = ObterUsuario(request)
+        if request.user.is_authenticated:
+            form = self.form_class_mudanca(initial={'nome': usuario.nome,
+                                                    'email': request.user.email,
+                                                    'nascimento': usuario.nascimento,
+                                                    'telefone': usuario.telefone,
+                                                    'departamento': usuario.departamento})
+
+        else:
+            form = self.form_class(None)
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
         form = self.form_class(request.POST)
 
-        if form.is_valid():
+        if form.is_valid() or request.user.is_authenticated:
+
+            if (request.user.is_authenticated):
+                professor = ObterUsuario(request)
+                nome = form.cleaned_data['nome']
+                email = form.cleaned_data['email']
+                nascimento = form.cleaned_data['nascimento']
+                telefone = form.cleaned_data['telefone']
+                departamento = form.cleaned_data['departamento']
+                professor.nome = nome
+                request.user.email = email
+                professor.nascimento = nascimento
+                professor.telefone = telefone
+                professor.departamento = departamento
+                professor.save()
+                request.user.save()
+                return redirect('ofertas:perfil')
 
             professor = ProfessorRecrutador()
 
@@ -135,6 +222,12 @@ class RegistroProfessor(View):
                     return redirect('ofertas:index')
 
         return render(request, self.template_name, {'form': form})
+
+def AlterarPerfil(request):
+    if (ObterUsuario(request).e_aluno):
+        return redirect('ofertas:registroaluno')
+    elif (not ObterUsuario(request).e_aluno):
+        return redirect('ofertas:registroprofessor')
 
 class CriarOferta(View):
     form_class = FormularioCriarOferta
@@ -273,4 +366,7 @@ def ObterUsuario(request):
         try:
             return ProfessorRecrutador.objects.get(identificador=request.user.username)
         except(ObjectDoesNotExist):
-            return request.user
+            try:
+                return request.user
+            except(ObjectDoesNotExist):
+                return None
