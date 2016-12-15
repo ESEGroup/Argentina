@@ -37,7 +37,8 @@ def MinhasOfertas(request):
 
 def DeletarOferta(request, oferta_id):
     oferta = Oferta.objects.get(id=oferta_id)
-    if(oferta.criador == request.user.username or request.user.is_superuser):
+    usuario = ObterUsuario(request)
+    if(oferta.criador == request.user.username or request.user.is_superuser or oferta.criador == usuario.username):
         oferta.delete()
     return redirect('ofertas:index')
 
@@ -253,6 +254,9 @@ class CriarOferta(View):
             bolsa.descricao = form.cleaned_data['descricao']
             bolsa.imagem = form.cleaned_data['imagem']
 
+            if bolsa.imagem == "":
+                bolsa.imagem = 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Minerva_UFRJ_Oficial.png'
+
             bolsa.save()
 
             return redirect('ofertas:detail',
@@ -266,10 +270,12 @@ def visualizarOferta(request, oferta_id):
     if request.user.is_authenticated and not request.user.is_superuser:
         e_candidato = False
         usuario = ObterUsuario(request)
+        candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
         if (usuario.e_aluno):
-            candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
+            # candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
             for candidato in candidatos:
-                if ((candidato.candidato_id == usuario.id) or (candidato.candidato_id == request.user.id)):
+                candidato_holder = Usuario.objects.get(id=candidato.candidato_id)
+                if (candidato_holder.username == usuario.username):
                     e_candidato = True
         return render(request, 'ofertas/visualizarOferta.html',
                   {'oferta': oferta,

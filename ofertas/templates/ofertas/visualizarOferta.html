@@ -12,7 +12,6 @@
     {% endif %}
 
     {% if usuario.e_aluno %}
-        {{ e_candidato }}
         {% if e_candidato %}
             <a href="{% url 'ofertas:candidatar' oferta.id %}" class="btn btn-default">Remover Candidatura</a>
         {% else %}

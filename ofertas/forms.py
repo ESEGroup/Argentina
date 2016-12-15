@@ -73,6 +73,7 @@ class UserLoginForm(forms.ModelForm):
 
 
 class FormularioCriarOferta(forms.ModelForm):
+    imagem = forms.CharField(required=False)
 
     class Meta:
         model = Oferta
