@@ -31,7 +31,7 @@
         </div>
 
         <!-- Items -->
-        {% if usuario or request.user %}
+        {% if request.user.is_authenticated %}
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
                 <li class="">

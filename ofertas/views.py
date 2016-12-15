@@ -43,8 +43,8 @@ class RegistroAluno(View):
     template_name = 'ofertas/formulario_registro.html'
 
     def get(self, request):
-        usuario = ObterUsuario(request)
         if request.user.is_authenticated:
+            usuario = ObterUsuario(request)
             form = self.form_class_mudanca(initial={'nome' : usuario.nome,
                                             'CRA' : usuario.CRA,
                                             'username' : request.user.username,
@@ -156,8 +156,8 @@ class RegistroProfessor(View):
     template_name = 'ofertas/formulario_registro.html'
 
     def get(self, request):
-        usuario = ObterUsuario(request)
         if request.user.is_authenticated:
+            usuario = ObterUsuario(request)
             form = self.form_class_mudanca(initial={'nome': usuario.nome,
                                                     'email': request.user.email,
                                                     'nascimento': usuario.nascimento,
