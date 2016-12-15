@@ -259,18 +259,23 @@ class CriarOferta(View):
 
 def visualizarOferta(request, oferta_id):
     oferta = get_object_or_404(Oferta, pk=oferta_id)
-    e_candidato = False
-    usuario = ObterUsuario(request)
-    if (usuario.e_aluno):
-        candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
-        for candidato in candidatos:
-            if ((candidato.candidato_id == usuario.id) or (candidato.candidato_id == request.user.id)):
-                e_candidato = True
-    return render(request, 'ofertas/visualizarOferta.html',
+    if request.user.is_authenticated:
+        e_candidato = False
+        usuario = ObterUsuario(request)
+        if (usuario.e_aluno):
+            candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
+            for candidato in candidatos:
+                if ((candidato.candidato_id == usuario.id) or (candidato.candidato_id == request.user.id)):
+                    e_candidato = True
+        return render(request, 'ofertas/visualizarOferta.html',
                   {'oferta': oferta,
                    'criador': ProfessorRecrutador.objects.get(id=oferta.criador),
                    'usuario' : ObterUsuario(request),
                    'e_candidato': e_candidato})
+    else:
+        return render(request, 'ofertas/visualizarOferta.html',
+                      {'oferta': oferta,
+                       'criador': ProfessorRecrutador.objects.get(id=oferta.criador)})
 
 
 def favorite(request, oferta_id):
@@ -359,9 +364,16 @@ def Perfil(request):
                   'ofertas/perfil.html',
                   {'usuario': usuario})
 
+def Anonimo(request):
+    all_ofertas = Oferta.objects.all()
+    return render(request, 'ofertas/index.html',
+                  {'all_ofertas': all_ofertas,
+                   'e_convidado': True})
+
 def ObterUsuario(request):
     try:
-        return Aluno.objects.get(identificador=request.user.username)
+        # return Aluno.objects.get(identificador=request.user.username)
+        get_object_or_404(Aluno, identificador=request.user.username)
     except(ObjectDoesNotExist):
         try:
             return ProfessorRecrutador.objects.get(identificador=request.user.username)

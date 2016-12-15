@@ -45,6 +45,6 @@ urlpatterns = [
 
     url(r'^perfil/alterar/$', views.AlterarPerfil, name='alterarperfil'),
 
-    # url(r'^logout/$', views.logOut, name='logout'),
+    url(r'^anonimo$', views.Anonimo, name='anonimo')
 
 ]

@@ -4,7 +4,9 @@
     <list default="true" id="9580c54b-f471-4d01-8711-9b0e204a6193" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/templates/ofertas/base.html" afterPath="$PROJECT_DIR$/ofertas/templates/ofertas/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/templates/ofertas/index.html" afterPath="$PROJECT_DIR$/ofertas/templates/ofertas/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/templates/ofertas/login.html" afterPath="$PROJECT_DIR$/ofertas/templates/ofertas/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/urls.py" afterPath="$PROJECT_DIR$/ofertas/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/views.py" afterPath="$PROJECT_DIR$/ofertas/views.py" />
     </list>
     <ignored path="oportunidadesufrj.iws" />
@@ -38,8 +40,28 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+            <state relative-caret-position="374">
+              <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="professores.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/professores.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="64" lean-forward="false" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -57,21 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/apps.py">
+      <file leaf-file-name="mudar_perfil.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/mudar_perfil.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+            <state relative-caret-position="289">
+              <caret line="17" column="88" lean-forward="false" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -80,18 +92,18 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ofertas/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="159" column="43" lean-forward="false" selection-start-line="159" selection-start-column="43" selection-end-line="159" selection-end-column="43" />
+            <state relative-caret-position="483">
+              <caret line="260" column="52" lean-forward="false" selection-start-line="260" selection-start-column="52" selection-end-line="260" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mudar_perfil.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/mudar_perfil.html">
+      <file leaf-file-name="visualizarOferta.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/visualizarOferta.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="88" lean-forward="false" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
+            <state relative-caret-position="306">
+              <caret line="18" column="81" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -107,21 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="perfil.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/perfil.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="54" lean-forward="false" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ofertas/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="49" column="1" lean-forward="false" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+            <state relative-caret-position="680">
+              <caret line="43" column="51" lean-forward="true" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -171,24 +173,23 @@
         <option value="$PROJECT_DIR$/ofertas/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/oportunidadesufrj/settings.py" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/professores.html" />
-        <option value="$PROJECT_DIR$/ofertas/templates/ofertas/index.html" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/formulario_criar_oferta.html" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/visualizarOferta.html" />
         <option value="$PROJECT_DIR$/ofertas/models.py" />
-        <option value="$PROJECT_DIR$/ofertas/templates/ofertas/login.html" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/formulario_registro.html" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/mudar_perfil.html" />
-        <option value="$PROJECT_DIR$/ofertas/urls.py" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/perfil.html" />
         <option value="$PROJECT_DIR$/ofertas/forms.py" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/base.html" />
+        <option value="$PROJECT_DIR$/ofertas/urls.py" />
+        <option value="$PROJECT_DIR$/ofertas/templates/ofertas/login.html" />
+        <option value="$PROJECT_DIR$/ofertas/templates/ofertas/index.html" />
         <option value="$PROJECT_DIR$/ofertas/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -498,7 +499,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="0" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1359375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -561,6 +562,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="25" column="39" lean-forward="false" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -637,6 +639,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -763,20 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/professores.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/formulario_criar_oferta.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -791,25 +780,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/visualizarOferta.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="81" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/formulario_registro.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/mudar_perfil.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="88" lean-forward="false" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -853,22 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="49" column="1" lean-forward="false" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -879,10 +837,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/mudar_perfil.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="88" lean-forward="false" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/professores.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="43" column="51" lean-forward="true" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/visualizarOferta.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="81" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="64" lean-forward="false" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="159" column="43" lean-forward="false" selection-start-line="159" selection-start-column="43" selection-end-line="159" selection-end-column="43" />
+        <state relative-caret-position="483">
+          <caret line="260" column="52" lean-forward="false" selection-start-line="260" selection-start-column="52" selection-end-line="260" selection-end-column="52" />
           <folding />
         </state>
       </provider>
