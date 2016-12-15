@@ -8,6 +8,10 @@ from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from django.forms import modelform_factory
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import OfertaSerializer
 from .forms import FormularioAluno, FormularioProfessor, FormularioCriarOferta, FormularioMudancaAluno, FormularioMudancaProfessor
 
 
@@ -382,3 +386,11 @@ def ObterUsuario(request):
                 return request.user
             except(ObjectDoesNotExist):
                 return None
+
+class OfertasLista(APIView):
+
+# Lista todas as Ofertas
+    def get(self, request):
+        ofertas = Oferta.objects.all()
+        serializer = OfertaSerializer(ofertas, many=True)
+        return Response(serializer.data)

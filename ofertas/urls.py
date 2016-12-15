@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 from django.contrib import admin
+from rest_framework.urlpatterns import format_suffix_patterns
 from django.contrib.auth import views as auth_views
 
 app_name = 'ofertas'
@@ -10,9 +11,6 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'ofertas/login.html'}, name='login'),
 
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
-
-
-    # url(r'^login/$', views.logIn.as_view(), name='login'),
 
     # /ofertas/
     url(r'^$', views.index, name='index'),
@@ -45,6 +43,10 @@ urlpatterns = [
 
     url(r'^perfil/alterar/$', views.AlterarPerfil, name='alterarperfil'),
 
-    url(r'^anonimo$', views.Anonimo, name='anonimo')
+    url(r'^anonimo$', views.Anonimo, name='anonimo'),
+
+    url(r'^API/', views.OfertasLista.as_view()),
 
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
