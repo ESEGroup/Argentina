@@ -259,7 +259,7 @@ class CriarOferta(View):
 
 def visualizarOferta(request, oferta_id):
     oferta = get_object_or_404(Oferta, pk=oferta_id)
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and not request.user.is_superuser:
         e_candidato = False
         usuario = ObterUsuario(request)
         if (usuario.e_aluno):
