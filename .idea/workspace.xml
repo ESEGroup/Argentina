@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9580c54b-f471-4d01-8711-9b0e204a6193" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/templates/ofertas/base.html" afterPath="$PROJECT_DIR$/ofertas/templates/ofertas/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/views.py" afterPath="$PROJECT_DIR$/ofertas/views.py" />
     </list>
     <ignored path="oportunidadesufrj.iws" />
@@ -63,13 +65,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+            <state relative-caret-position="425">
+              <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
               <folding>
-                <element signature="e#1987#1993#0" expanded="true" />
+                <element signature="e#1609#1615#0" expanded="true" />
+                <element signature="e#1997#2003#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ofertas/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="261" column="45" lean-forward="false" selection-start-line="261" selection-start-column="45" selection-end-line="261" selection-end-column="45" />
+            <state relative-caret-position="340">
+              <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -150,6 +153,10 @@
       <find>Edita</find>
       <find>edita</find>
       <find>logout</find>
+      <find>criar</find>
+      <find>minhas</find>
+      <find>ofertA</find>
+      <find>MINH</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -176,11 +183,11 @@
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/mudar_perfil.html" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/perfil.html" />
         <option value="$PROJECT_DIR$/ofertas/forms.py" />
-        <option value="$PROJECT_DIR$/ofertas/templates/ofertas/base.html" />
         <option value="$PROJECT_DIR$/ofertas/urls.py" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/login.html" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/index.html" />
         <option value="$PROJECT_DIR$/ofertas/views.py" />
+        <option value="$PROJECT_DIR$/ofertas/templates/ofertas/base.html" />
       </list>
     </option>
   </component>
@@ -232,20 +239,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Argentina" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Argentina" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Argentina" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oportunidadesufrj" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -567,7 +560,8 @@
         <state relative-caret-position="400">
           <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding>
-            <element signature="e#1987#1993#0" expanded="true" />
+            <element signature="e#1609#1615#0" expanded="true" />
+            <element signature="e#1997#2003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -644,7 +638,8 @@
         <state relative-caret-position="400">
           <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding>
-            <element signature="e#1987#1993#0" expanded="true" />
+            <element signature="e#1609#1615#0" expanded="true" />
+            <element signature="e#1997#2003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -823,16 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-          <folding>
-            <element signature="e#1987#1993#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/mudar_perfil.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -883,9 +868,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="261" column="45" lean-forward="false" selection-start-line="261" selection-start-column="45" selection-end-line="261" selection-end-column="45" />
+        <state relative-caret-position="340">
+          <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+          <folding>
+            <element signature="e#1609#1615#0" expanded="true" />
+            <element signature="e#1997#2003#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

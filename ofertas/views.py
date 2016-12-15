@@ -25,7 +25,7 @@ def index(request):
     return redirect('ofertas:login')
 
 def MinhasOfertas(request):
-    all_ofertas = Oferta.objects.filter(criador=request.user.username)
+    all_ofertas = Oferta.objects.filter(criador=request.user.id)
     return render(request, 'ofertas/index.html',
                       {'all_ofertas': all_ofertas,
                         'minha': True,
@@ -372,8 +372,8 @@ def Anonimo(request):
 
 def ObterUsuario(request):
     try:
-        # return Aluno.objects.get(identificador=request.user.username)
-        get_object_or_404(Aluno, identificador=request.user.username)
+        return Aluno.objects.get(identificador=request.user.username)
+        # return get_object_or_404(Aluno, identificador=request.user.username)
     except(ObjectDoesNotExist):
         try:
             return ProfessorRecrutador.objects.get(identificador=request.user.username)

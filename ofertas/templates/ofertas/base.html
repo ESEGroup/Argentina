@@ -26,7 +26,7 @@
             {% if request.user.is_superuser %}
                 <a>Olá {{ request.user.username }}</a>
             {% elif usuario %}
-                <a>Olá {{ usuario.nome }}</a>
+                <a>Olá {{ usuario.nome }}   </a>&nbsp&nbsp&nbsp;
             {% endif %}
         </div>
 
@@ -34,41 +34,53 @@
         {% if request.user.is_authenticated %}
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="">
+                <li>
                     <a href=" {% url 'ofertas:perfil' %}">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;
                         Perfil
                     </a>
+                </li>
             {% if request.user.is_superuser %}
-                    <a href=" {% url 'ofertas:minhasofertas' %}">
+                <li>
+                    <a href=" {% url 'ofertas:index' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
                         Ofertas
                     </a>
+                </li>
+                <li>
                     <a href=" {% url 'ofertas:professores' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
                         Professores
                     </a>
+                </li>
             {% endif %}
             {% if usuario.e_aluno == False %}
                 {% if usuario.esta_validado == True %}
+                <li>
                     <a href=" {% url 'ofertas:minhasofertas' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
                         Minhas Ofertas
                     </a>
+                </li>
                 {% endif %}
                 {% if usuario.admDepartamento == True %}
+                <li>
                     <a href=" {% url 'ofertas:professores' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
                         Professores
                     </a>
+                </li>
                 {% endif %}
             {% else %}
-                <a href=" {% url 'ofertas:index' %}">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
-                        Minhas Inscrições
-                </a>
-            {% endif %}
+                    {% if not request.user.is_superuser %}
+                <li>
+                        <a href=" {% url 'ofertas:index' %}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                                Minhas Inscrições
+                        </a>
                 </li>
+                    {% endif %}
+            {% endif %}
             </ul>
 
             <!-- Barra de busca: -->
@@ -82,14 +94,6 @@
 
 
             <ul class="nav navbar-nav navbar-right">
-                {% if request.user.is_superuser %}
-                <li class="">
-                    <a href=" {% url 'ofertas:criarofertas' %}">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
-                        Criar Oferta
-                    </a>
-                </li>
-                {% endif %}
              {% if usuario.e_aluno == False %}
                 {% if usuario.esta_validado == True %}
                 <li class="">
