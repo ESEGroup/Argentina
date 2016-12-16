@@ -1,0 +1,14 @@
+remetente.nome + ' Candidatou-se a ' + oferta.titulo + '\n' +
+    'Dados: \n' +
+    'Nome: ' + remetente.nome + '<br>' +
+    'Email: ' + request.user.email + '\n' +
+    'Telefone: ' + remetente.telefone + '\n' +
+    'Nascimento: ' + remetente.nascimento + '\n' +
+    'Estado Civil: ' + remetente.estadoCivil + '\n' +
+    'Curso: ' + remetente.curso + '\n' +
+    'Período: ' + remetente.periodo + '\n' +
+    'CRA: ' + remetente.CRA + '\n' +
+    'Objetivo: ' + remetente.objetivo + '\n' +
+    'Formação: ' + remetente.formacao + '\n' +
+    'Experiência: ' + remetente.experiencia + '\n' +
+    'Habilidade: ' + remetente.habilidade + '\n'

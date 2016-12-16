@@ -6,13 +6,18 @@ from django.contrib.auth import authenticate, login, logout
 from django.views import generic
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.template import Context
 from django.db import IntegrityError
 from django.forms import modelform_factory
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import OfertaSerializer
-from .forms import FormularioAluno, FormularioProfessor, FormularioCriarOferta, FormularioMudancaAluno, FormularioMudancaProfessor
+from .forms import FormularioAluno, FormularioProfessor, FormularioCriarOferta, FormularioMudancaAluno, \
+    FormularioMudancaProfessor
 
 
 def index(request):
@@ -28,19 +33,22 @@ def index(request):
                        'usuario': ObterUsuario(request)})
     return redirect('ofertas:login')
 
+
 def MinhasOfertas(request):
     all_ofertas = Oferta.objects.filter(criador=request.user.id)
     return render(request, 'ofertas/index.html',
-                      {'all_ofertas': all_ofertas,
-                        'minha': True,
-                       'usuario':ObterUsuario(request)})
+                  {'all_ofertas': all_ofertas,
+                   'minha': True,
+                   'usuario': ObterUsuario(request)})
+
 
 def DeletarOferta(request, oferta_id):
     oferta = Oferta.objects.get(id=oferta_id)
     usuario = ObterUsuario(request)
-    if(oferta.criador == request.user.username or request.user.is_superuser or oferta.criador == usuario.username):
+    if (oferta.criador == request.user.username or request.user.is_superuser or oferta.criador == usuario.username):
         oferta.delete()
     return redirect('ofertas:index')
+
 
 class RegistroAluno(View):
     form_class = FormularioAluno
@@ -50,19 +58,19 @@ class RegistroAluno(View):
     def get(self, request):
         if request.user.is_authenticated:
             usuario = ObterUsuario(request)
-            form = self.form_class_mudanca(initial={'nome' : usuario.nome,
-                                            'CRA' : usuario.CRA,
-                                            'username' : request.user.username,
-                                            'email' : request.user.email,
-                                            'curso' : usuario.curso,
-                                            'estadoCivil' : usuario.estadoCivil,
-                                            'experiencia' : usuario.experiencia,
-                                            'formacao' : usuario.formacao,
-                                            'habilidade' : usuario.habilidade,
-                                            'nascimento' : usuario.nascimento,
-                                            'objetivo' : usuario.objetivo,
-                                            'periodo' : usuario.periodo,
-                                            'telefone' : usuario.telefone})
+            form = self.form_class_mudanca(initial={'nome': usuario.nome,
+                                                    'CRA': usuario.CRA,
+                                                    'username': request.user.username,
+                                                    'email': request.user.email,
+                                                    'curso': usuario.curso,
+                                                    'estadoCivil': usuario.estadoCivil,
+                                                    'experiencia': usuario.experiencia,
+                                                    'formacao': usuario.formacao,
+                                                    'habilidade': usuario.habilidade,
+                                                    'nascimento': usuario.nascimento,
+                                                    'objetivo': usuario.objetivo,
+                                                    'periodo': usuario.periodo,
+                                                    'telefone': usuario.telefone})
 
         else:
             form = self.form_class(None)
@@ -89,7 +97,7 @@ class RegistroAluno(View):
                 telefone = form.cleaned_data['telefone']
                 if (nome != ''):
                     aluno.nome = nome
-                if(email != ''):
+                if (email != ''):
                     request.user.email = email
                     request.user.save()
                 if (CRA != ''):
@@ -148,9 +156,9 @@ class RegistroAluno(View):
 
                 if user is not None:
 
-                   if user.is_active:
-                      login(request, user)
-                      return redirect('ofertas:index')
+                    if user.is_active:
+                        login(request, user)
+                        return redirect('ofertas:index')
 
         return render(request, self.template_name, {'form': form})
 
@@ -228,11 +236,13 @@ class RegistroProfessor(View):
 
         return render(request, self.template_name, {'form': form})
 
+
 def AlterarPerfil(request):
     if (ObterUsuario(request).e_aluno):
         return redirect('ofertas:registroaluno')
     elif (not ObterUsuario(request).e_aluno):
         return redirect('ofertas:registroprofessor')
+
 
 class CriarOferta(View):
     form_class = FormularioCriarOferta
@@ -240,7 +250,7 @@ class CriarOferta(View):
 
     def get(self, request):
         form = self.form_class(None)
-        return render(request, self.template_name, {'form': form, 'usuario':ObterUsuario(request)})
+        return render(request, self.template_name, {'form': form, 'usuario': ObterUsuario(request)})
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -260,9 +270,9 @@ class CriarOferta(View):
             bolsa.save()
 
             return redirect('ofertas:detail',
-                            oferta_id=bolsa.pk,)
+                            oferta_id=bolsa.pk, )
 
-        return render(request, self.template_name, {'form': form, 'usuario':ObterUsuario(request)})
+        return render(request, self.template_name, {'form': form, 'usuario': ObterUsuario(request)})
 
 
 def visualizarOferta(request, oferta_id):
@@ -278,10 +288,10 @@ def visualizarOferta(request, oferta_id):
                 if (candidato_holder.username == usuario.username):
                     e_candidato = True
         return render(request, 'ofertas/visualizarOferta.html',
-                  {'oferta': oferta,
-                   'criador': ProfessorRecrutador.objects.get(id=oferta.criador),
-                   'usuario' : ObterUsuario(request),
-                   'e_candidato': e_candidato})
+                      {'oferta': oferta,
+                       'criador': ProfessorRecrutador.objects.get(id=oferta.criador),
+                       'usuario': ObterUsuario(request),
+                       'e_candidato': e_candidato})
     else:
         return render(request, 'ofertas/visualizarOferta.html',
                       {'oferta': oferta,
@@ -302,6 +312,7 @@ def favorite(request, oferta_id):
         selected_candidato.save()
         return render(request, 'ofertas/visualizarOferta.html', {'oferta': oferta})
 
+
 def Professores(request):
     professoresDoubled = ProfessorRecrutador.objects.filter(admDepartamento=False)
     professores = professoresDoubled
@@ -311,7 +322,7 @@ def Professores(request):
         professores = [professoresDoubled[0]]
         counter = 0
         for professor in professoresDoubled:
-            if (not(counter % 2) and (counter > 1)):
+            if (not (counter % 2) and (counter > 1)):
                 professores += [professoresDoubled[counter]]
             counter += 1
 
@@ -319,11 +330,12 @@ def Professores(request):
                   {'professores': professores,
                    'usuario': ObterUsuario(request)})
 
+
 def ValidarProfessor(request, oferta_id):
     professorObj1 = ProfessorRecrutador.objects.get(id=oferta_id)
     id2 = int(oferta_id) + 1
     professorObj2 = ProfessorRecrutador.objects.get(id=id2)
-    if(professorObj1.esta_validado or professorObj2.esta_validado):
+    if (professorObj1.esta_validado or professorObj2.esta_validado):
         professorObj1.esta_validado = False
         professorObj1.admDepartamento = False
     else:
@@ -332,6 +344,7 @@ def ValidarProfessor(request, oferta_id):
     professorObj1.save()
     professorObj2.save()
     return redirect('ofertas:professores')
+
 
 def ValidarAdmDepartamento(request, professor_id):
     professorObj1 = ProfessorRecrutador.objects.get(id=professor_id)
@@ -345,6 +358,7 @@ def ValidarAdmDepartamento(request, professor_id):
     professorObj1.save()
     professorObj2.save()
     return redirect('ofertas:professores')
+
 
 def Candidatar(request, oferta_id):
     candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
@@ -361,9 +375,12 @@ def Candidatar(request, oferta_id):
                                   curso=usuario.curso,
                                   is_favorite=False)
             candidato.save()
+            EnviarEmail(request, usuario, ProfessorRecrutador.objects.get(id=Oferta.objects.get(id=oferta_id).criador),
+                        oferta=Oferta.objects.get(id=oferta_id))
 
     return redirect('ofertas:detail',
-                  oferta_id=oferta_id)
+                    oferta_id=oferta_id)
+
 
 def Perfil(request):
     if (request.user.is_superuser):
@@ -374,11 +391,13 @@ def Perfil(request):
                   'ofertas/perfil.html',
                   {'usuario': usuario})
 
+
 def Anonimo(request):
     all_ofertas = Oferta.objects.all()
     return render(request, 'ofertas/index.html',
                   {'all_ofertas': all_ofertas,
                    'e_convidado': True})
+
 
 def ObterUsuario(request):
     try:
@@ -393,10 +412,93 @@ def ObterUsuario(request):
             except(ObjectDoesNotExist):
                 return None
 
-class OfertasLista(APIView):
 
-# Lista todas as Ofertas
+class OfertasLista(APIView):
+    # Lista todas as Ofertas
     def get(self, request):
         ofertas = Oferta.objects.all()
         serializer = OfertaSerializer(ofertas, many=True)
         return Response(serializer.data)
+
+
+def EnviarEmail(request, remetente, destinatario, oferta):
+    msg = EmailMessage(
+        'Bolsa: ' + oferta.titulo,
+        remetente.nome + ' Candidatou-se a ' + oferta.titulo + '<br>' +
+        'Dados: <br>' +
+        'Nome: ' + remetente.nome + '<br>' +
+        'Email: ' + request.user.email + '<br>' +
+        'Telefone: ' + remetente.telefone + '<br>' +
+        'Nascimento: ' + remetente.nascimento + '<br>' +
+        'Estado Civil: ' + remetente.estadoCivil + '<br>' +
+        'Curso: ' + remetente.curso + '<br>' +
+        'Período: ' + remetente.periodo + '<br>' +
+        'CRA: ' + remetente.CRA + '<br>' +
+        'Objetivo: ' + remetente.objetivo + '<br>' +
+        'Formação: ' + remetente.formacao + '<br>' +
+        'Experiência: ' + remetente.experiencia + '<br>' +
+        'Habilidade: ' + remetente.habilidade + '<br>',
+        request.user.email,
+        [destinatario.email]
+    )
+
+    msg.content_subtype = "html"
+    msg.send()
+
+    # send_mail(
+    # 'Bolsa: ' + oferta.titulo,
+    # remetente.nome + ' Candidatou-se a ' + oferta.titulo + '\n' +
+    # 'Dados: \n' +
+    # 'Nome: ' + remetente.nome + '<br>' +
+    # 'Email: ' + request.user.email + '\n' +
+    # 'Telefone: ' + remetente.telefone + '\n' +
+    # 'Nascimento: ' + remetente.nascimento + '\n' +
+    # 'Estado Civil: ' + remetente.estadoCivil + '\n' +
+    # 'Curso: ' + remetente.curso + '\n' +
+    # 'Período: ' + remetente.periodo + '\n' +
+    # 'CRA: ' + remetente.CRA + '\n' +
+    # 'Objetivo: ' + remetente.objetivo + '\n' +
+    # 'Formação: ' + remetente.formacao + '\n' +
+    # 'Experiência: ' + remetente.experiencia + '\n' +
+    # 'Habilidade: ' + remetente.habilidade + '\n',
+    # request.user.email,
+    # ['luisfnicolau@hotmail.com'],
+    # html_message=
+    # '< center >'
+    # '< div'
+    # '  class ="container-fluid" >'
+    # '  < div'
+    # '      class ="row" >'
+    # '      < div'
+    # '          class ="col-sm-12 col-md-7" >'
+    # '          < div'
+    # '              class ="panel panel-default" >'
+    # '             < div'
+    # '                 class ="panel-body" >'
+    # '                 < div'
+    # '                     class ="form-group" >'
+    # '                     < div'
+    # '                         class ="col-sm-offset-2 col-sm-10" >'
+    # '                         Nome:  {{usuario.nome}} < br > < br >'
+    # '                         Email: {{request.user.email}} < br > < br >'
+    # '                         Login: {{request.user.username}} < br > < br >'
+    # '                         Telefone:  {{usuario.telefone}} < br > < br >'
+    # '                         Nascimento:  {{usuario.nascimento}} < br > < br >'
+    # '                         Estado Civil: {{usuario.estadoCivil}} < br > < br >'
+    # '                         Curso: {{usuario.curso}} < br > < br >'
+    # '                         Periodo: {{usuario.periodo}} < br > < br >'
+    # '                         CRA: {{usuario.CRA}} < br > < br >'
+    # '                         Objetivo: {{usuario.objetivo}} < br > < br >'
+    # '                         Formação: {{usuario.formacao}} < br > < br >'
+    # '                         Experiência: {{usuario.experiencia}} < br > < br >'
+    # '                         Habilidade: {{usuario.habilidade}}'
+    # '                     < / div > < br > < br >'
+    # '                 < / div >'
+    # '             < / div >'
+    # '         < / div >'
+    # '     < / div >'
+    # ' < / div >'
+    # '< / div >'
+    # '< / center >',
+    # fail_silently=False,
+    # )
