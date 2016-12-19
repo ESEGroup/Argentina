@@ -47,6 +47,8 @@ urlpatterns = [
 
     url(r'^API/', views.OfertasLista.as_view()),
 
+    url(r'^q/$', views.BuscarOferta, name='buscar'),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -445,3 +445,12 @@ def EnviarEmail(request, remetente, destinatario, oferta):
 
     msg.content_subtype = "html"
     msg.send()
+
+def BuscarOferta(request):
+    try:
+        all_ofertas = Oferta.objects.filter(titulo=request.GET.get('q'))
+    except(ObjectDoesNotExist):
+        all_ofertas = Oferta.objects.all
+    return render(request, 'ofertas/index.html',
+                      {'all_ofertas': all_ofertas ,
+                       'user': request.user})

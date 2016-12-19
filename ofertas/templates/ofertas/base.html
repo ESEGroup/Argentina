@@ -24,14 +24,15 @@
                 </button>
             <a class="navbar-brand" href="{% url 'ofertas:index' %}">Oportunidades UFRJ</a>
             {% if request.user.is_superuser %}
-                <a>Olá {{ request.user.username }}</a>
+                <a class="navbar-brand">Olá {{ request.user.username }}</a>
             {% elif usuario %}
-                <a>Olá {{ usuario.nome }}   </a>&nbsp&nbsp&nbsp;
+                <a class="navbar-brand">Olá {{ usuario.nome }}   </a>&nbsp&nbsp&nbsp;
             {% endif %}
         </div>
 
         <!-- Items -->
         {% if request.user.is_authenticated %}
+        <center>
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
                 <li>
@@ -83,17 +84,18 @@
             {% endif %}
             </ul>
 
-            <!-- Barra de busca: -->
 
-            <form class="navbar-form navbar-left" role="search" method="get" action="#">
+            <ul class="nav navbar-nav navbar-right">
+
+                <!-- Barra de busca: -->
+
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'ofertas:buscar' %}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="q" value="">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </div>
             </form>
 
-
-            <ul class="nav navbar-nav navbar-right">
              {% if usuario.e_aluno == False %}
                 {% if usuario.esta_validado == True %}
                 <li class="">
@@ -113,6 +115,7 @@
             </ul>
 
         </div>
+            </center>
         {% endif %}
     </div>
 </nav>
