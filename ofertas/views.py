@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .models import Oferta, Usuario, Aluno, ProfessorRecrutador, Candidato
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404, redirect
