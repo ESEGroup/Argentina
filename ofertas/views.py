@@ -34,6 +34,57 @@ def index(request):
                        'usuario': ObterUsuario(request)})
     return redirect('ofertas:login')
 
+class CriarOferta(View):
+    form_class = FormularioCriarOferta
+    template_name = 'ofertas/formulario_criar_oferta.html'
+
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form, 'usuario': ObterUsuario(request)})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+
+            bolsa = Oferta()
+
+            bolsa.criador = request.user.id
+            bolsa.titulo = form.cleaned_data['titulo']
+            bolsa.descricao = form.cleaned_data['descricao']
+            bolsa.imagem = form.cleaned_data['imagem']
+
+            if bolsa.imagem == "":
+                bolsa.imagem = 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Minerva_UFRJ_Oficial.png'
+
+            bolsa.save()
+
+            return redirect('ofertas:detail',
+                            oferta_id=bolsa.pk, )
+
+        return render(request, self.template_name, {'form': form, 'usuario': ObterUsuario(request)})
+
+def visualizarOferta(request, oferta_id):
+    oferta = get_object_or_404(Oferta, pk=oferta_id)
+    if request.user.is_authenticated and not request.user.is_superuser:
+        e_candidato = False
+        usuario = ObterUsuario(request)
+        candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
+        if (usuario.e_aluno):
+            # candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
+            for candidato in candidatos:
+                candidato_holder = Usuario.objects.get(id=candidato.candidato_id)
+                if (candidato_holder.username == usuario.username):
+                    e_candidato = True
+        return render(request, 'ofertas/visualizarOferta.html',
+                      {'oferta': oferta,
+                       'criador': ProfessorRecrutador.objects.get(id=oferta.criador),
+                       'usuario': ObterUsuario(request),
+                       'e_candidato': e_candidato})
+    else:
+        return render(request, 'ofertas/visualizarOferta.html',
+                      {'oferta': oferta,
+                       'criador': ProfessorRecrutador.objects.get(id=oferta.criador)})
 
 def MinhasOfertas(request):
     all_ofertas = Oferta.objects.filter(criador=request.user.id)
@@ -49,6 +100,8 @@ def DeletarOferta(request, oferta_id):
     if (oferta.criador == request.user.username or request.user.is_superuser or oferta.criador == usuario.username):
         oferta.delete()
     return redirect('ofertas:index')
+
+
 
 
 class RegistroAluno(View):
@@ -243,60 +296,6 @@ def AlterarPerfil(request):
         return redirect('ofertas:registroaluno')
     elif (not ObterUsuario(request).e_aluno):
         return redirect('ofertas:registroprofessor')
-
-
-class CriarOferta(View):
-    form_class = FormularioCriarOferta
-    template_name = 'ofertas/formulario_criar_oferta.html'
-
-    def get(self, request):
-        form = self.form_class(None)
-        return render(request, self.template_name, {'form': form, 'usuario': ObterUsuario(request)})
-
-    def post(self, request):
-        form = self.form_class(request.POST)
-
-        if form.is_valid():
-
-            bolsa = Oferta()
-
-            bolsa.criador = request.user.id
-            bolsa.titulo = form.cleaned_data['titulo']
-            bolsa.descricao = form.cleaned_data['descricao']
-            bolsa.imagem = form.cleaned_data['imagem']
-
-            if bolsa.imagem == "":
-                bolsa.imagem = 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Minerva_UFRJ_Oficial.png'
-
-            bolsa.save()
-
-            return redirect('ofertas:detail',
-                            oferta_id=bolsa.pk, )
-
-        return render(request, self.template_name, {'form': form, 'usuario': ObterUsuario(request)})
-
-
-def visualizarOferta(request, oferta_id):
-    oferta = get_object_or_404(Oferta, pk=oferta_id)
-    if request.user.is_authenticated and not request.user.is_superuser:
-        e_candidato = False
-        usuario = ObterUsuario(request)
-        candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
-        if (usuario.e_aluno):
-            # candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
-            for candidato in candidatos:
-                candidato_holder = Usuario.objects.get(id=candidato.candidato_id)
-                if (candidato_holder.username == usuario.username):
-                    e_candidato = True
-        return render(request, 'ofertas/visualizarOferta.html',
-                      {'oferta': oferta,
-                       'criador': ProfessorRecrutador.objects.get(id=oferta.criador),
-                       'usuario': ObterUsuario(request),
-                       'e_candidato': e_candidato})
-    else:
-        return render(request, 'ofertas/visualizarOferta.html',
-                      {'oferta': oferta,
-                       'criador': ProfessorRecrutador.objects.get(id=oferta.criador)})
 
 
 def favorite(request, oferta_id):
