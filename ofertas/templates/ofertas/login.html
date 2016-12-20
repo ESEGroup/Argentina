@@ -1,0 +1,30 @@
+{% extends 'ofertas/base.html' %}
+
+{% block body %}
+<center>
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Login</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-sucess">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h3>Cadastre-se</h3>
+                    <a href="{% url 'ofertas:registroaluno' %}">Sou Aluno |</a>
+                    <a href="{% url 'ofertas:registroprofessor' %}"> Sou Professor</a><br>
+                    <a href="{% url 'ofertas:anonimo' %}">Seguir como Convidado</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</center>
+{% endblock %}

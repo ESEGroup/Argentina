@@ -1,11 +1,23 @@
 {% extends 'ofertas/base.html' %}
 
 {% block body %}
+
+    {% if usuario.e_aluno == False %}
+        {% if usuario.esta_validado == False %}
+            <h3> Sua Conta ainda esta pendente, você pode somente visualizar as ofertas</h3>
+        {% endif %}
+    {% endif %}
+
     {% if all_ofertas %}
         <h2>Aqui estão as ofertas:</h2>
         <ul>
             {% for oferta in all_ofertas %}
-                <li><a href="{% url 'ofertas:detail' oferta.id %}"> {{ oferta.titulo }} </a></li>
+                <li><a href="{% url 'ofertas:detail' oferta.id %}"> {{ oferta.titulo }} </a>
+                {%if minha == True or request.user.is_superuser %}
+                      -
+                    <a href="{% url 'ofertas:deletar' oferta.id %}">Deletar</a>
+                {% endif %}
+                </li>
             {% endfor %}
         </ul>
     {% else %}

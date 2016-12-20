@@ -1,0 +1,28 @@
+{% extends 'ofertas/base.html' %}
+
+{% block body %}
+
+    {% if professores %}
+        <h2>Professores:</h2>
+        <ul>
+            {% for professor in professores %}
+                    <li> {{ professor.nome }}  -
+                    {%if professor.esta_validado == True %}
+                        <a href="{% url 'ofertas:validarProfessor' professor.id %}">Invalidar</a>
+                        {% if request.user.is_superuser %}
+                            {% if professor.admDepartamento %} -
+                                <a href="{% url 'ofertas:AdmDepartamento' professor.id %}"> Remover permissão de Administrador de Departamento</a>
+                            {% else %} -
+                                <a href="{% url 'ofertas:AdmDepartamento' professor.id %}"> Conceder permissão de Administrador de departamento</a>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                        <a href="{% url 'ofertas:validarProfessor' professor.id %}">Validar</a>
+                    {% endif %}
+                    </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2>Não há professores cadastrados.</h2>
+    {% endif %}
+{% endblock %}

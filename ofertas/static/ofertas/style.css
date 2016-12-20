@@ -4,8 +4,13 @@ body{
 
 .navbar{
     border-radius: 0;
+    float:none;
 }
 
 .navbar-brand{
     font-family: 'Pacifico', cursive;
+}
+
+.mynavbar{
+    text-align: center;
 }
