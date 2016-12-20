@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9580c54b-f471-4d01-8711-9b0e204a6193" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/tests.py" afterPath="$PROJECT_DIR$/ofertas/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/urls.py" afterPath="$PROJECT_DIR$/ofertas/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ofertas/views.py" afterPath="$PROJECT_DIR$/ofertas/views.py" />
     </list>
     <ignored path="oportunidadesufrj.iws" />
@@ -16,61 +20,59 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/ofertas/models.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="357">
+                    <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+                    <folding>
+                      <element signature="e#24#52#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="oportunidadesufrj" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ofertas/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-622">
+            <state relative-caret-position="17">
               <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <element signature="e#25#68#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/apps.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ofertas/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="434" column="13" lean-forward="false" selection-start-line="434" selection-start-column="13" selection-end-line="434" selection-end-column="13" />
+            <state relative-caret-position="-3529">
+              <caret line="97" column="35" lean-forward="false" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
               <folding>
                 <element signature="e#24#98#0" expanded="true" />
               </folding>
@@ -78,14 +80,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/models.py">
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ofertas/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+            <state relative-caret-position="510">
+              <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
               <folding>
-                <element signature="e#24#52#0" expanded="true" />
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formulario_criar_oferta.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/formulario_criar_oferta.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,30 +113,10 @@
         </entry>
       </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oportunidadesufrj/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ofertas/serializers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ofertas/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="49" column="28" lean-forward="false" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+            <state relative-caret-position="738">
+              <caret line="51" column="52" lean-forward="false" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
               <folding>
                 <element signature="e#25#57#0" expanded="true" />
               </folding>
@@ -137,8 +129,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -166,6 +158,7 @@
       <find>criar</find>
       <find>email</find>
       <find>center</find>
+      <find>str</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,7 +181,6 @@
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/mudar_perfil.html" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/perfil.html" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/login.html" />
-        <option value="$PROJECT_DIR$/ofertas/templates/ofertas/index.html" />
         <option value="$PROJECT_DIR$/UFRJBolsasApi/models.py" />
         <option value="$PROJECT_DIR$/UFRJBolsasApi/admin.py" />
         <option value="$PROJECT_DIR$/ofertasAPI/models.py" />
@@ -200,11 +192,19 @@
         <option value="$PROJECT_DIR$/ofertas/static/ofertas/style.css" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/base.html" />
         <option value="$PROJECT_DIR$/ofertas/admin.py" />
-        <option value="$PROJECT_DIR$/ofertas/urls.py" />
         <option value="$PROJECT_DIR$/ofertas/forms.py" />
         <option value="$PROJECT_DIR$/ofertas/templates/ofertas/visualizarOferta.html" />
-        <option value="$PROJECT_DIR$/ofertas/models.py" />
+        <option value="$PROJECT_DIR$/ofertas/templates/ofertas/index.html" />
+        <option value="$PROJECT_DIR$/ofertas/urls.py" />
         <option value="$PROJECT_DIR$/ofertas/views.py" />
+        <option value="$PROJECT_DIR$/ofertas/pytest.ini" />
+        <option value="$PROJECT_DIR$/ofertas/conftest.py" />
+        <option value="$PROJECT_DIR$/ofertas/migrations/test_settings.py" />
+        <option value="$PROJECT_DIR$/ofertas/test_settings.py" />
+        <option value="$PROJECT_DIR$/oportunidadesufrj/pytest.ini" />
+        <option value="$PROJECT_DIR$/oportunidadesufrj/test.py" />
+        <option value="$PROJECT_DIR$/ofertas/models.py" />
+        <option value="$PROJECT_DIR$/ofertas/tests.py" />
       </list>
     </option>
   </component>
@@ -363,10 +363,12 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Luis-DELL\Documents\GitHub\Argentina\ofertas\templates\ofertas" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Luis\Documents\GitHub\Argentina\ofertas" />
+      <recent name="C:\Users\Luis\Documents\GitHub\Argentina\oportunidadesufrj" />
       <recent name="C:\Users\Luis-DELL\Documents\GitHub\Argentina\ofertas\templates\ofertas" />
     </key>
   </component>
@@ -558,35 +560,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ofertas/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oportunidadesufrj/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="62" lean-forward="false" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/visualizarOferta.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -693,13 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/formulario_criar_oferta.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/formulario_registro.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -734,14 +700,6 @@
     <entry file="file://$PROJECT_DIR$/ofertasAPI/apps.py" />
     <entry file="file://$PROJECT_DIR$/ofertasAPI/models.py" />
     <entry file="file://$PROJECT_DIR$/ofertasAPI/admin.py" />
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="64" lean-forward="false" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/perfil.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -782,14 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -811,20 +761,12 @@
         <state relative-caret-position="102">
           <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/visualizarOferta.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -848,42 +790,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/visualizarOferta.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/formulario_criar_oferta.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="28" lean-forward="false" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+        <state relative-caret-position="738">
+          <caret line="51" column="52" lean-forward="false" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
           <folding>
             <element signature="e#25#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/test_settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/pytest.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/conftest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="42" lean-forward="false" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/templates/ofertas/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ofertas/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3529">
+          <caret line="97" column="35" lean-forward="false" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+          <folding>
+            <element signature="e#24#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-622">
+        <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#68#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ofertas/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+        <state relative-caret-position="357">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="e#24#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ofertas/views.py">
+    <entry file="file://$PROJECT_DIR$/ofertas/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="434" column="13" lean-forward="false" selection-start-line="434" selection-start-column="13" selection-end-line="434" selection-end-column="13" />
+        <state relative-caret-position="510">
+          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding>
-            <element signature="e#24#98#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

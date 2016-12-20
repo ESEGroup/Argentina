@@ -71,7 +71,6 @@ def visualizarOferta(request, oferta_id):
         usuario = ObterUsuario(request)
         candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
         if (usuario.e_aluno):
-            # candidatos = Oferta.objects.get(id=oferta_id).candidato_set.all()
             for candidato in candidatos:
                 candidato_holder = Usuario.objects.get(id=candidato.candidato_id)
                 if (candidato_holder.username == usuario.username):
