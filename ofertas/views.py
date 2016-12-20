@@ -432,7 +432,7 @@ def EnviarEmail(request, remetente, destinatario, oferta):
         'Nascimento: ' + remetente.nascimento + '<br>' +
         'Estado Civil: ' + remetente.estadoCivil + '<br>' +
         'Curso: ' + remetente.curso + '<br>' +
-        'Período: ' + remetente.periodo + '<br>' +
+        'Periodo: ' + remetente.periodo + '<br>' +
         'CRA: ' + remetente.CRA + '<br>' +
         'Objetivo: ' + remetente.objetivo + '<br>' +
         'Formação: ' + remetente.formacao + '<br>' +
